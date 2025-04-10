@@ -10,8 +10,7 @@ body {
     color: white;
     font-family: Arial, sans-serif;
     text-align: center;
-    overflow-y: auto;
-    padding-bottom: 50px;
+    overflow: hidden;
 }
 
 /* Background Animation */
@@ -63,26 +62,4 @@ p {
 
 .contact a img:hover {
     transform: scale(1.2);
-}
-
-/* About Section */
-.about, .my-work {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 20px;
-    width: 80%;
-    max-width: 600px;
-}
-
-/* My Work Section */
-.my-work ul {
-    list-style: none;
-    padding: 0;
-}
-
-.my-work li {
-    font-size: 1rem;
-    margin: 10px 0;
-    text-align: left;
 }
