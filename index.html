@@ -5,27 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GW Himanshu - Video Editor</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 </head>
 <body>
-    <!-- Background Animation -->
-    <div id="background"></div>
+    <div class="background">
+        <div class="animation"></div>
+    </div>
 
-    <!-- Header Section -->
     <header>
-        <h1 id="title"></h1>
+        <h1>GW Himanshu</h1>
         <p>🔥 Expert in Viral Edits | Cinematic Wedding | Business Promos 🚀</p>
     </header>
 
-    <!-- About Me Section -->
+    <!-- Title Section: Mere Bare Me -->
     <section class="about">
         <h2>About Me</h2>
-        <p>Hi, I'm Himanshu, a passionate video editor who specializes in creating high-energy, smooth, and trendy edits. 
-           I love transforming raw footage into stunning, eye-catching content that engages and inspires audiences.</p>
+        <p>Hi, I'm Himanshu, a passionate video editor who specializes in creating high-energy, smooth, and trendy edits. I love transforming raw footage into stunning, eye-catching content that engages and inspires audiences.</p>
     </section>
 
-    <!-- My Work Section -->
+    <!-- My Work Section: Main Kya Karta Hu -->
     <section class="my-work">
         <h2>My Work</h2>
         <p>I create engaging and visually appealing videos, including:</p>
@@ -37,44 +34,13 @@
         </ul>
     </section>
 
-    <!-- Contact Section -->
     <div class="contact">
         <a href="https://www.instagram.com/gw_himanshu" target="_blank">
-            <img src="instagram-logo.png" alt="Instagram Logo">
+            <img src="instagram.png" alt="Instagram">
         </a>
         <a href="https://wa.me/919016668354" target="_blank">
-            <img src="whatsapp-logo.png" alt="WhatsApp Logo">
+            <img src="whatsapp.png" alt="WhatsApp">
         </a>
     </div>
-
-    <!-- JavaScript Animations -->
-    <script>
-        // Typing Animation for Title
-        const text = "GW Himanshu - Video Editor";
-        let i = 0;
-        function typeWriter() {
-            if (i < text.length) {
-                document.getElementById("title").innerHTML += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
-            }
-        }
-        window.onload = typeWriter;
-
-        // GSAP Animations
-        gsap.from("header", { duration: 1, y: -50, opacity: 0, ease: "bounce.out" });
-        gsap.from(".about", { duration: 1, x: -100, opacity: 0, delay: 0.5 });
-        gsap.from(".my-work", { duration: 1, x: 100, opacity: 0, delay: 1 });
-        gsap.from(".contact img", { duration: 1, scale: 0, opacity: 0, stagger: 0.3, delay: 1.5 });
-
-        // Particles.js Background Animation
-        particlesJS("background", {
-            particles: {
-                number: { value: 80 },
-                size: { value: 3 },
-                move: { speed: 1 }
-            }
-        });
-    </script>
 </body>
 </html>
