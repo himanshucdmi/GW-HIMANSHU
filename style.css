@@ -1,42 +1,32 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background: linear-gradient(to right, #ff512f, #dd2476), url('background.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-    margin: 0;
-    padding: 0;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GW Himanshu - Video Editor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="fade-in">GW Himanshu</h1>
+            <p class="fade-in">🔥 Transforming Moments into Epic Edits! 🔥</p>
+        </header>
 
-header {
-    background: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    border-radius: 10px;
-    display: inline-block;
-    margin-top: 100px;
-}
+        <div class="socials">
+            <a href="https://www.instagram.com/gw_himanshu" target="_blank" class="btn instagram">
+                <img src="instagram.png" alt="Instagram"> Instagram
+            </a>
+            <a href="https://wa.me/919016668354" target="_blank" class="btn whatsapp">
+                <img src="whatsapp.png" alt="WhatsApp"> WhatsApp
+            </a>
+        </div>
+    </div>
 
-h1 {
-    font-size: 36px;
-    margin: 10px 0;
-}
-
-p {
-    font-size: 20px;
-    margin: 5px 0;
-}
-
-.contact {
-    margin-top: 20px;
-}
-
-.contact a {
-    margin: 0 10px;
-    display: inline-block;
-}
-
-.contact img {
-    width: 60px;
-    height: 60px;
-    filter: drop-shadow(2px 2px 5px black); /* Logo ko thoda highlight karne ke liye */
-}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelector("h1").classList.add("active");
+        });
+    </script>
+</body>
+</html>
