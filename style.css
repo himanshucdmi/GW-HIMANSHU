@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GW Himanshu | Premium Video Editor</title>
+    <title>GW Himanshu | VIDEO EDITING SERVICES</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #FF4D4D;
@@ -116,39 +116,38 @@
             position: relative;
         }
 
-        .title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
+        .main-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
             font-weight: 700;
             margin-bottom: 0.5rem;
             background: linear-gradient(to right, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            letter-spacing: 2px;
-            line-height: 1.2;
-        }
-
-        .title span {
-            display: inline-block;
-            animation: bounce 2s infinite;
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            color: var(--secondary);
-            font-weight: 300;
             letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .contact-person {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            font-weight: 600;
             margin-bottom: 1.5rem;
+            display: block;
+            animation: pulse 2s infinite;
         }
 
         .tagline {
             display: inline-block;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 1.5rem;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50px;
             font-size: 0.9rem;
             margin-top: 1rem;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* About Section */
@@ -189,6 +188,7 @@
             font-size: 1.1rem;
             position: relative;
             z-index: 1;
+            text-align: center;
         }
 
         /* Services Section */
@@ -424,9 +424,10 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
         @keyframes float {
@@ -453,32 +454,6 @@
                 gap: 1.5rem;
             }
         }
-
-        /* Cursor Effect */
-        .cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: rgba(255, 77, 77, 0.5);
-            pointer-events: none;
-            mix-blend-mode: screen;
-            z-index: 999;
-            transform: translate(-50%, -50%);
-            transition: transform 0.1s ease;
-        }
-
-        .cursor-follower {
-            position: fixed;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 1px solid rgba(255, 77, 77, 0.3);
-            pointer-events: none;
-            z-index: 998;
-            transform: translate(-50%, -50%);
-            transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
-        }
     </style>
 </head>
 <body>
@@ -486,10 +461,6 @@
     <div class="preloader">
         <div class="loader"></div>
     </div>
-
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
 
     <!-- Video Background -->
     <div class="video-bg">
@@ -510,14 +481,14 @@
     <!-- Main Container -->
     <main class="container">
         <header class="header">
-            <h1 class="title">GW <span>Himanshu</span></h1>
-            <p class="subtitle">Premium Video Editor & Motion Designer</p>
+            <h1 class="main-title">VIDEO EDITING SERVICES</h1>
+            <span class="contact-person">HIMANSHU</span>
             <span class="tagline">Viral Edits • Cinematic Wedding Films • Business Promos</span>
         </header>
 
         <section class="about">
             <div class="about-content">
-                <p>I transform raw footage into captivating visual stories with dynamic transitions, cinematic color grading, and professional motion graphics. Specializing in viral content that engages audiences and elevates brands.</p>
+                <p>Professional video editing services that transform your footage into captivating visual stories. Specializing in dynamic transitions, cinematic color grading, and engaging motion graphics for maximum impact.</p>
             </div>
         </section>
 
@@ -527,7 +498,7 @@
                 <div class="service-card">
                     <i class="fas fa-film service-icon"></i>
                     <h3>Viral Reels</h3>
-                    <p>Attention-grabbing social media content with trending effects and seamless transitions that boost engagement.</p>
+                    <p>Trendy, attention-grabbing social media content with seamless transitions and effects that boost engagement.</p>
                 </div>
                 <div class="service-card">
                     <i class="fas fa-ring service-icon"></i>
@@ -537,13 +508,13 @@
                 <div class="service-card">
                     <i class="fas fa-briefcase service-icon"></i>
                     <h3>Business Promos</h3>
-                    <p>Professional promotional videos that communicate your brand message and drive conversions.</p>
+                    <p>Professional promotional videos that effectively communicate your brand message and drive results.</p>
                 </div>
             </div>
         </section>
 
         <section class="portfolio">
-            <h2 class="section-title">My Work</h2>
+            <h2 class="section-title">Portfolio Showcase</h2>
             <div class="portfolio-grid">
                 <div class="portfolio-item">
                     <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Viral Reel Example">
@@ -553,98 +524,4 @@
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Wedding Film Example">
-                    <div class="portfolio-overlay">
-                        <h3>Wedding Highlights</h3>
-                        <p>Cinematic wedding film</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1579389083078-4e7018379f7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Business Promo Example">
-                    <div class="portfolio-overlay">
-                        <h3>Product Promo</h3>
-                        <p>E-commerce product showcase</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="contact">
-            <a href="https://www.instagram.com/gw_himanshu" target="_blank" class="social-link">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://wa.me/919016668354" target="_blank" class="social-link">
-                <i class="fab fa-whatsapp"></i>
-            </a>
-        </div>
-    </main>
-
-    <script>
-        // Preloader
-        window.addEventListener('load', function() {
-            const preloader = document.querySelector('.preloader');
-            preloader.style.opacity = '0';
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 500);
-        });
-
-        // Custom Cursor
-        const cursor = document.querySelector('.cursor');
-        const cursorFollower = document.querySelector('.cursor-follower');
-
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            
-            setTimeout(() => {
-                cursorFollower.style.left = e.clientX + 'px';
-                cursorFollower.style.top = e.clientY + 'px';
-            }, 100);
-        });
-
-        document.querySelectorAll('a, button, .service-card').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
-                cursor.style.backgroundColor = 'rgba(0, 212, 255, 0.5)';
-                cursorFollower.style.width = '30px';
-                cursorFollower.style.height = '30px';
-                cursorFollower.style.borderColor = 'rgba(0, 212, 255, 0.3)';
-            });
-            
-            el.addEventListener('mouseleave', () => {
-                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-                cursor.style.backgroundColor = 'rgba(255, 77, 77, 0.5)';
-                cursorFollower.style.width = '40px';
-                cursorFollower.style.height = '40px';
-                cursorFollower.style.borderColor = 'rgba(255, 77, 77, 0.3)';
-            });
-        });
-
-        // Video background fallback
-        const videoBg = document.querySelector('.video-bg video');
-        videoBg.addEventListener('error', () => {
-            document.querySelector('.video-bg').style.background = 'linear-gradient(-45deg, #0A0A1A, #090979, #00D4FF, #0A0A1A)';
-            document.querySelector('.overlay').style.display = 'none';
-        });
-
-        // Animate elements on scroll
-        const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.service-card, .portfolio-item');
-            
-            elements.forEach(el => {
-                const elementPosition = el.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.2;
-                
-                if (elementPosition < screenPosition) {
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                }
-            });
-        };
-
-        window.addEventListener('scroll', animateOnScroll);
-        animateOnScroll(); // Run once on load
-    </script>
-</body>
-</html>
+                    <img src="https://images.unsplash.com/photo-1519671482749-fd
