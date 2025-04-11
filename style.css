@@ -1,137 +1,650 @@
-/* Base Styles - भारतीय थीम */
-:root {
-    --saffron: #FF9933;
-    --green: #138808;
-    --blue: #000080;
-    --gold: #FFD700;
-    --light: #ffffff;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GW Himanshu | Premium Video Editor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF4D4D;
+            --secondary: #00D4FF;
+            --dark: #0A0A1A;
+            --light: #FFFFFF;
+            --accent: #090979;
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-    font-family: 'Hind', 'Poppins', sans-serif;
-    background: var(--blue);
-    color: var(--light);
-    overflow-x: hidden;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 1.6;
+        }
 
-/* Background Animation - तिरंगा ग्रेडिएंट */
-.background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
-    overflow: hidden;
-}
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
 
-.gradient {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, var(--saffron), var(--white), var(--green));
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
-    opacity: 0.7;
-}
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s linear infinite;
+        }
 
-.particles {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="white" opacity="0.3"/></svg>');
-    background-size: 3px 3px;
-    animation: particlesMove 100s linear infinite;
-}
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
 
-/* दीया एनिमेशन */
-.diya-animation {
-    position: absolute;
-    bottom: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 100px;
-    background: radial-gradient(circle, var(--gold) 0%, var(--saffron) 70%, transparent 80%);
-    opacity: 0.5;
-    filter: blur(10px);
-    animation: diyaFlicker 3s ease-in-out infinite alternate;
-}
+        /* Video Background */
+        .video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
 
-/* रंगोली डिज़ाइन */
-.rangoli {
-    position: absolute;
-    bottom: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 150px;
-    height: 10px;
-    background: radial-gradient(circle, transparent 0%, var(--gold) 50%, transparent 100%);
-    filter: blur(5px);
-}
+        .video-bg video {
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            opacity: 0.15;
+        }
 
-/* हेडर - नाम का ब्लर फिक्स */
-.header {
-    margin-bottom: 2rem;
-    position: relative;
-}
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(10,10,26,0.8) 0%, rgba(10,10,26,0.5) 100%);
+        }
 
-.title {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    background: linear-gradient(to right, var(--saffron), var(--gold));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: none; /* ब्लर फिक्स */
-    letter-spacing: 2px;
-}
+        /* Main Container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            padding: 3rem 2rem;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(10px);
+            background-color: rgba(10, 10, 26, 0.5);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 2rem 0;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease-out 0.5s forwards;
+        }
 
-.title span {
-    display: inline-block;
-    animation: bounce 2s infinite;
-}
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
 
-/* फ्लोटिंग एलिमेंट्स (इमोजी) */
-.floating-elements {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-}
+        .title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
 
-.floating-icon {
-    position: absolute;
-    font-size: 2rem;
-    opacity: 0.7;
-    animation: float 10s ease-in-out infinite;
-    animation-delay: var(--delay);
-}
+        .title span {
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
 
-/* नए एनिमेशन्स */
-@keyframes diyaFlicker {
-    0%, 100% { opacity: 0.4; transform: translateX(-50%) scale(0.9); }
-    50% { opacity: 0.8; transform: translateX(-50%) scale(1.1); }
-}
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
 
-@keyframes float {
-    0% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-100px) rotate(180deg); }
-    100% { transform: translateY(0) rotate(360deg); }
-}
+        .tagline {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
 
-/* बाकी CSS आपके मूल कोड जैसा ही रहेगा (सर्विस कार्ड्स, कॉन्टैक्ट आइकन्स आदि) */
+        /* About Section */
+        .about {
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .about-content {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border-left: 3px solid var(--primary);
+            border-right: 3px solid var(--secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .about-content:hover::before {
+            transform: translateX(100%);
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Services Section */
+        .services {
+            margin: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .service-card:nth-child(1) { animation: fadeUp 0.8s ease 0.3s forwards; }
+        .service-card:nth-child(2) { animation: fadeUp 0.8s ease 0.5s forwards; }
+        .service-card:nth-child(3) { animation: fadeUp 0.8s ease 0.7s forwards; }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) !important;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .service-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.2);
+            color: var(--secondary);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--light);
+            transition: var(--transition);
+        }
+
+        .service-card:hover h3 {
+            color: var(--secondary);
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Portfolio Showcase */
+        .portfolio {
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            transition: var(--transition);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        .contact {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.8rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-link:hover::before {
+            opacity: 1;
+        }
+
+        .social-link:nth-child(1):hover {
+            color: #E1306C;
+        }
+
+        .social-link:nth-child(2):hover {
+            color: #25D366;
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 15s linear infinite;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(50px, -50px) rotate(180deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact {
+                gap: 1.5rem;
+            }
+        }
+
+        /* Cursor Effect */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(255, 77, 77, 0.5);
+            pointer-events: none;
+            mix-blend-mode: screen;
+            z-index: 999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease;
+        }
+
+        .cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 77, 77, 0.3);
+            pointer-events: none;
+            z-index: 998;
+            transform: translate(-50%, -50%);
+            transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Video Background -->
+    <div class="video-bg">
+        <video autoplay muted loop>
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-waves-in-the-water-1164-large.mp4" type="video/mp4">
+        </video>
+        <div class="overlay"></div>
+    </div>
+
+    <!-- Floating Elements -->
+    <div class="floating-elements">
+        <div class="floating-element" style="top:20%; left:10%; font-size:2rem; animation-delay:0s;">🎬</div>
+        <div class="floating-element" style="top:70%; left:80%; font-size:1.5rem; animation-delay:2s;">✨</div>
+        <div class="floating-element" style="top:40%; left:85%; font-size:3rem; animation-delay:4s;">📽️</div>
+        <div class="floating-element" style="top:80%; left:15%; font-size:2.5rem; animation-delay:6s;">🎥</div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="container">
+        <header class="header">
+            <h1 class="title">GW <span>Himanshu</span></h1>
+            <p class="subtitle">Premium Video Editor & Motion Designer</p>
+            <span class="tagline">Viral Edits • Cinematic Wedding Films • Business Promos</span>
+        </header>
+
+        <section class="about">
+            <div class="about-content">
+                <p>I transform raw footage into captivating visual stories with dynamic transitions, cinematic color grading, and professional motion graphics. Specializing in viral content that engages audiences and elevates brands.</p>
+            </div>
+        </section>
+
+        <section class="services">
+            <h2 class="section-title">My Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-film service-icon"></i>
+                    <h3>Viral Reels</h3>
+                    <p>Attention-grabbing social media content with trending effects and seamless transitions that boost engagement.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-ring service-icon"></i>
+                    <h3>Wedding Films</h3>
+                    <p>Cinematic storytelling that preserves your special moments with emotional impact and artistic flair.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-briefcase service-icon"></i>
+                    <h3>Business Promos</h3>
+                    <p>Professional promotional videos that communicate your brand message and drive conversions.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="portfolio">
+            <h2 class="section-title">My Work</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Viral Reel Example">
+                    <div class="portfolio-overlay">
+                        <h3>Fitness Reel</h3>
+                        <p>Trendy transitions for fitness influencer</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Wedding Film Example">
+                    <div class="portfolio-overlay">
+                        <h3>Wedding Highlights</h3>
+                        <p>Cinematic wedding film</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1579389083078-4e7018379f7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Business Promo Example">
+                    <div class="portfolio-overlay">
+                        <h3>Product Promo</h3>
+                        <p>E-commerce product showcase</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="contact">
+            <a href="https://www.instagram.com/gw_himanshu" target="_blank" class="social-link">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://wa.me/919016668354" target="_blank" class="social-link">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+    </main>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            const preloader = document.querySelector('.preloader');
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500);
+        });
+
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorFollower = document.querySelector('.cursor-follower');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 100);
+        });
+
+        document.querySelectorAll('a, button, .service-card').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                cursor.style.backgroundColor = 'rgba(0, 212, 255, 0.5)';
+                cursorFollower.style.width = '30px';
+                cursorFollower.style.height = '30px';
+                cursorFollower.style.borderColor = 'rgba(0, 212, 255, 0.3)';
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                cursor.style.backgroundColor = 'rgba(255, 77, 77, 0.5)';
+                cursorFollower.style.width = '40px';
+                cursorFollower.style.height = '40px';
+                cursorFollower.style.borderColor = 'rgba(255, 77, 77, 0.3)';
+            });
+        });
+
+        // Video background fallback
+        const videoBg = document.querySelector('.video-bg video');
+        videoBg.addEventListener('error', () => {
+            document.querySelector('.video-bg').style.background = 'linear-gradient(-45deg, #0A0A1A, #090979, #00D4FF, #0A0A1A)';
+            document.querySelector('.overlay').style.display = 'none';
+        });
+
+        // Animate elements on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.service-card, .portfolio-item');
+            
+            elements.forEach(el => {
+                const elementPosition = el.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Run once on load
+    </script>
+</body>
+</html>
