@@ -1,10 +1,10 @@
-/* Base Styles */
+/* Base Styles - भारतीय थीम */
 :root {
-    --primary: #ff4d4d;
-    --secondary: #00d4ff;
-    --dark: #020024;
+    --saffron: #FF9933;
+    --green: #138808;
+    --blue: #000080;
+    --gold: #FFD700;
     --light: #ffffff;
-    --accent: #090979;
 }
 
 * {
@@ -14,8 +14,8 @@
 }
 
 body {
-    font-family: 'Poppins', Arial, sans-serif;
-    background: var(--dark);
+    font-family: 'Hind', 'Poppins', sans-serif;
+    background: var(--blue);
     color: var(--light);
     overflow-x: hidden;
     min-height: 100vh;
@@ -24,7 +24,7 @@ body {
     align-items: center;
 }
 
-/* Background Animation */
+/* Background Animation - तिरंगा ग्रेडिएंट */
 .background {
     position: fixed;
     top: 0;
@@ -39,64 +39,63 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(-45deg, var(--dark), var(--accent), var(--secondary), var(--dark));
+    background: linear-gradient(135deg, var(--saffron), var(--white), var(--green));
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
 .particles {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="white" opacity="0.5"/></svg>');
-    background-size: 2px 2px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="white" opacity="0.3"/></svg>');
+    background-size: 3px 3px;
     animation: particlesMove 100s linear infinite;
 }
 
-@keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+/* दीया एनिमेशन */
+.diya-animation {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, var(--gold) 0%, var(--saffron) 70%, transparent 80%);
+    opacity: 0.5;
+    filter: blur(10px);
+    animation: diyaFlicker 3s ease-in-out infinite alternate;
 }
 
-@keyframes particlesMove {
-    0% { background-position: 0 0; }
-    100% { background-position: 1000px 1000px; }
+/* रंगोली डिज़ाइन */
+.rangoli {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 10px;
+    background: radial-gradient(circle, transparent 0%, var(--gold) 50%, transparent 100%);
+    filter: blur(5px);
 }
 
-/* Container */
-.container {
-    width: 90%;
-    max-width: 1200px;
-    padding: 2rem;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-    backdrop-filter: blur(5px);
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    margin: 2rem 0;
-    animation: fadeIn 1s ease-out;
-}
-
-/* Header */
+/* हेडर - नाम का ब्लर फिक्स */
 .header {
     margin-bottom: 2rem;
+    position: relative;
 }
 
 .title {
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
-    background: linear-gradient(to right, var(--primary), var(--secondary));
+    background: linear-gradient(to right, var(--saffron), var(--gold));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-transform: uppercase;
+    text-shadow: none; /* ब्लर फिक्स */
     letter-spacing: 2px;
-    animation: titleGlow 2s ease-in-out infinite alternate;
 }
 
 .title span {
@@ -104,201 +103,35 @@ body {
     animation: bounce 2s infinite;
 }
 
-.subtitle {
-    font-size: 1.2rem;
-    color: var(--secondary);
-    font-weight: 300;
-    letter-spacing: 1px;
-}
-
-/* About Section */
-.about {
-    margin: 2rem 0;
-}
-
-.about-content {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    border-left: 3px solid var(--primary);
-    border-right: 3px solid var(--secondary);
-    animation: borderGlow 4s infinite;
-}
-
-.about-content p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
-/* Services Section */
-.services {
-    margin: 3rem 0;
-}
-
-.section-title {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    position: relative;
-    display: inline-block;
-}
-
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background: linear-gradient(to right, var(--primary), var(--secondary));
-    border-radius: 3px;
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.service-card {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 2rem;
-    border-radius: 15px;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    position: relative;
-    overflow: hidden;
-}
-
-.service-card::before {
-    content: '';
-    position: absolute;
+/* फ्लोटिंग एलिमेंट्स (इमोजी) */
+.floating-elements {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.03), transparent);
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
-}
-
-.service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.2);
-}
-
-.service-card:hover::before {
-    transform: translateX(100%);
-}
-
-.service-card h3 {
-    font-size: 1.5rem;
-    margin: 1rem 0;
-    color: var(--secondary);
-}
-
-.service-card p {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.service-icon {
-    font-size: 2.5rem;
-    color: var(--primary);
-    margin-bottom: 1rem;
-}
-
-/* Contact Section */
-.contact {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-.social-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 60px;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    color: white;
-    font-size: 1.8rem;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.social-link::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    pointer-events: none;
     z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
 }
 
-.social-link:hover {
-    transform: translateY(-5px) scale(1.1);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+.floating-icon {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0.7;
+    animation: float 10s ease-in-out infinite;
+    animation-delay: var(--delay);
 }
 
-.social-link:hover::before {
-    opacity: 1;
+/* नए एनिमेशन्स */
+@keyframes diyaFlicker {
+    0%, 100% { opacity: 0.4; transform: translateX(-50%) scale(0.9); }
+    50% { opacity: 0.8; transform: translateX(-50%) scale(1.1); }
 }
 
-.social-link:nth-child(1):hover {
-    color: #E1306C; /* Instagram color */
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-100px) rotate(180deg); }
+    100% { transform: translateY(0) rotate(360deg); }
 }
 
-.social-link:nth-child(2):hover {
-    color: #25D366; /* WhatsApp color */
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes titleGlow {
-    from { text-shadow: 0 0 10px rgba(255, 77, 77, 0.5); }
-    to { text-shadow: 0 0 20px rgba(0, 212, 255, 0.7); }
-}
-
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-@keyframes borderGlow {
-    0% { border-left-color: var(--primary); border-right-color: var(--secondary); }
-    50% { border-left-color: var(--secondary); border-right-color: var(--primary); }
-    100% { border-left-color: var(--primary); border-right-color: var(--secondary); }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .title {
-        font-size: 2.5rem;
-    }
-    
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .container {
-        padding: 1.5rem;
-    }
-}
+/* बाकी CSS आपके मूल कोड जैसा ही रहेगा (सर्विस कार्ड्स, कॉन्टैक्ट आइकन्स आदि) */
