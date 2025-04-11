@@ -1,451 +1,306 @@
-:root {
-    --primary: #FF4D4D;
-    --secondary: #00D4FF;
-    --dark: #0A0A1A;
-    --light: #FFFFFF;
-    --accent: #090979;
-    --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--dark);
-    color: var(--light);
-    overflow-x: hidden;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Preloader */
-.preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--dark);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    transition: opacity 0.6s ease;
-}
-
-.loader {
-    font-size: 2.5rem;
-    color: var(--primary);
-    animation: pulse 1.2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 0.8; }
-    50% { transform: scale(1.3); opacity: 1; }
-}
-
-/* Video Background */
-.video-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
-    overflow: hidden;
-}
-
-.video-bg video {
-    min-width: 100%;
-    min-height: 100%;
-    object-fit: cover;
-    opacity: 0.25;
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(10, 10, 26, 0.9), rgba(10, 10, 26, 0.7));
-}
-
-/* Main Container */
-.container {
-    width: 100%;
-    max-width: 1400px;
-    padding: 3rem 1.5rem;
-    position: relative;
-    z-index: 1;
-    backdrop-filter: blur(10px);
-    background: rgba(10, 10, 26, 0.65);
-    border-radius: 20px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    margin: 2rem 1rem;
-    animation: fadeIn 1s ease-out forwards;
-}
-
-/* Header */
-.header {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.title {
-    font-size: clamp(2.5rem, 6vw, 4rem);
-    font-weight: 700;
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    letter-spacing: 2px;
-    animation: slideIn 1s ease-out;
-}
-
-.contact-person {
-    font-size: clamp(1.2rem, 3vw, 1.5rem);
-    font-weight: 400;
-    color: var(--light);
-    margin: 0.5rem 0;
-    animation: slideIn 1.2s ease-out;
-}
-
-.subtitle {
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
-    color: var(--secondary);
-    font-weight: 300;
-    letter-spacing: 1px;
-    margin-bottom: 1.5rem;
-}
-
-.tagline {
-    display: inline-block;
-    padding: 0.6rem 1.2rem;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 30px;
-    font-size: clamp(0.85rem, 2vw, 0.95rem);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: var(--transition);
-}
-
-.tagline:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.05);
-}
-
-/* About Section */
-.about-content {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 2rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
-    border-left: 3px solid var(--primary);
-    border-right: 3px solid var(--secondary);
-    position: relative;
-    overflow: hidden;
-    animation: fadeIn 1s ease-out 0.5s forwards;
-    opacity: 0;
-}
-
-.about-content p {
-    font-size: clamp(1rem, 2.5vw, 1.1rem);
-}
-
-/* Services Section */
-.services {
-    margin: 4rem 0;
-}
-
-.section-title {
-    font-size: clamp(1.8rem, 4vw, 2.2rem);
-    text-align: center;
-    margin-bottom: 2rem;
-    position: relative;
-}
-
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary), var(--secondary));
-    border-radius: 3px;
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
-}
-
-.service-card {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 2rem;
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: var(--transition);
-}
-
-.service-card.animate-in {
-    animation: slideUp 0.6s ease-out forwards;
-}
-
-.service-card:hover, .service-card.hover {
-    transform: translateY(-10px);
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-}
-
-.service-icon {
-    font-size: 2.5rem;
-    color: var(--primary);
-    margin-bottom: 1rem;
-    transition: var(--transition);
-}
-
-.service-card:hover .service-icon, .service-card.hover .service-icon {
-    color: var(--secondary);
-    transform: scale(1.1);
-}
-
-.service-card h3 {
-    font-size: clamp(1.3rem, 3vw, 1.5rem);
-    margin-bottom: 0.75rem;
-}
-
-.service-card p {
-    font-size: clamp(0.9rem, 2vw, 0.95rem);
-    color: rgba(255, 255, 255, 0.8);
-}
-
-/* Portfolio Section */
-.portfolio {
-    margin: 4rem 0;
-}
-
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-}
-
-.portfolio-item {
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    aspect-ratio: 16/9;
-    opacity: 0;
-    transform: scale(0.95);
-    transition: var(--transition);
-}
-
-.portfolio-item.animate-in {
-    animation: zoomIn 0.6s ease-out forwards;
-}
-
-.portfolio-item:hover, .portfolio-item.hover {
-    transform: scale(1.02);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-}
-
-.portfolio-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: var(--transition);
-}
-
-.portfolio-item:hover img, .portfolio-item.hover img {
-    transform: scale(1.05);
-}
-
-.portfolio-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 1.5rem;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: var(--transition);
-}
-
-.portfolio-item:hover .portfolio-overlay, .portfolio-item.hover .portfolio-overlay {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.portfolio-overlay h3 {
-    font-size: clamp(1.2rem, 2.5vw, 1.4rem);
-    margin-bottom: 0.5rem;
-}
-
-.portfolio-overlay p {
-    font-size: clamp(0.85rem, 2vw, 0.9rem);
-}
-
-/* Contact Section */
-.contact {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin: 3rem 0;
-    flex-wrap: wrap;
-}
-
-.social-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 60px;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    color: var(--light);
-    font-size: 1.8rem;
-    transition: var(--transition);
-    opacity: 0;
-    transform: scale(0.8);
-}
-
-.social-link.animate-in {
-    animation: popIn 0.5s ease-out forwards;
-}
-
-.social-link:hover, .social-link.hover {
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
-    transform: scale(1.1);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.social-link:nth-child(1):hover, .social-link:nth-child(1).hover {
-    color: #E1306C;
-}
-
-.social-link:nth-child(2):hover, .social-link:nth-child(2).hover {
-    color: #25D366;
-}
-
-/* Floating Elements */
-.floating-elements {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-}
-
-.floating-element {
-    position: absolute;
-    opacity: 0.2;
-    animation: float 10s ease-in-out infinite;
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes zoomIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes popIn {
-    from { opacity: 0; transform: scale(0.8); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes float {
-    0% { transform: translate(0, 0); }
-    50% { transform: translate(40px, -40px); }
-    100% { transform: translate(0, 0); }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .container {
-        padding: 2rem 1rem;
-        margin: 1rem;
-    }
-
-    .title {
-        font-size: clamp(2rem, 5vw, 3rem);
-    }
-
-    .contact-person {
-        font-size: clamp(1rem, 2.5vw, 1.2rem);
-    }
-
-    .subtitle {
-        font-size: clamp(0.9rem, 2vw, 1.1rem);
-    }
-
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .portfolio-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .about-content {
-        padding: 1.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .section-title {
-        font-size: clamp(1.5rem, 3.5vw, 1.8rem);
-    }
-
-    .service-card {
-        padding: 1.5rem;
-    }
-
-    .portfolio-item {
-        border-radius: 8px;
-    }
-
-    .social-link {
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
-    }
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GW Himanshu | VIDEO EDITING SERVICES</title>
+    <style>
+        :root {
+            --primary: #FF4D4D;
+            --secondary: #00D4FF;
+            --dark: #0A0A1A;
+            --light: #FFFFFF;
+            --accent: #090979;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 1.6;
+        }
+
+        /* Background Animation */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(-45deg, var(--dark), var(--accent), var(--secondary), var(--dark));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Main Container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            padding: 3rem 2rem;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(5px);
+            background-color: rgba(10, 10, 26, 0.5);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            margin: 2rem 0;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .main-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .contact-person {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .tagline {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* About Section */
+        .about {
+            margin: 3rem 0;
+        }
+
+        .about-content {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border-left: 3px solid var(--primary);
+            border-right: 3px solid var(--secondary);
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        /* Services Section */
+        .services {
+            margin: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--light);
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Contact Section */
+        .contact {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="gradient-bg"></div>
+
+    <!-- Main Container -->
+    <main class="container">
+        <header class="header">
+            <h1 class="main-title">VIDEO EDITING SERVICES</h1>
+            <span class="contact-person">HIMANSHU</span>
+            <span class="tagline">Viral Edits • Wedding Films • Business Promos</span>
+        </header>
+
+        <section class="about">
+            <div class="about-content">
+                <p>Professional video editing services that transform your footage into captivating visual stories. Specializing in dynamic transitions, cinematic color grading, and engaging motion graphics.</p>
+            </div>
+        </section>
+
+        <section class="services">
+            <h2 class="section-title">My Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🎬</div>
+                    <h3>Viral Reels</h3>
+                    <p>Trendy, attention-grabbing social media content with seamless transitions and effects.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💍</div>
+                    <h3>Wedding Films</h3>
+                    <p>Cinematic storytelling that preserves your special moments with artistic flair.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3>Business Promos</h3>
+                    <p>Professional promotional videos that communicate your brand message effectively.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="contact">
+            <a href="https://www.instagram.com/gw_himanshu" target="_blank" class="social-link">
+                📸
+            </a>
+            <a href="https://wa.me/919016668354" target="_blank" class="social-link">
+                💬
+            </a>
+        </div>
+    </main>
+
+    <script>
+        // Simple animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.service-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.5s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
