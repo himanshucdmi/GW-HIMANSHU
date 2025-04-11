@@ -3,137 +3,303 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Editing Services</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>GW Himanshu | VIDEO EDITING SERVICES</title>
+    <style>
+        :root {
+            --primary: #FF4D4D;
+            --secondary: #00D4FF;
+            --dark: #0A0A1A;
+            --light: #FFFFFF;
+            --accent: #090979;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 1.6;
+        }
+
+        /* Background Animation */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(-45deg, var(--dark), var(--accent), var(--secondary), var(--dark));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Main Container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            padding: 3rem 2rem;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(5px);
+            background-color: rgba(10, 10, 26, 0.5);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            margin: 2rem 0;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .main-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .contact-person {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .tagline {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* About Section */
+        .about {
+            margin: 3rem 0;
+        }
+
+        .about-content {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border-left: 3px solid var(--primary);
+            border-right: 3px solid var(--secondary);
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        /* Services Section */
+        .services {
+            margin: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--light);
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Contact Section */
+        .contact {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact {
+                gap: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Preloader -->
-    <div class="preloader">
-        <div class="loader">
-            <i class="fas fa-film"></i>
-        </div>
-    </div>
-
-    <!-- Video Background -->
-    <div class="video-bg">
-        <video autoplay muted loop playsinline>
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-dark-background-with-blue-light-33376-large.mp4" type="video/mp4">
-        </video>
-        <div class="overlay"></div>
-    </div>
-
-    <!-- Floating Elements -->
-    <div class="floating-elements">
-        <div class="floating-element" style="top:15%; left:5%; font-size:1.8rem; animation-delay:0s;">🎥</div>
-        <div class="floating-element" style="top:65%; left:75%; font-size:1.5rem; animation-delay:1.5s;">✨</div>
-        <div class="floating-element" style="top:35%; left:85%; font-size:2rem; animation-delay:3s;">📽️</div>
-        <div class="floating-element" style="top:75%; left:10%; font-size:1.7rem; animation-delay:4.5s;">🎬</div>
-    </div>
+    <!-- Background Animation -->
+    <div class="gradient-bg"></div>
 
     <!-- Main Container -->
     <main class="container">
         <header class="header">
-            <h1 class="title">Video Editing Services</h1>
-            <p class="contact-person">Contact Person - Himanshu</p>
-            <p class="subtitle">Premium Video Editing & Motion Design</p>
-            <span class="tagline">Viral Reels • Wedding Films • Brand Promos</span>
+            <h1 class="main-title">VIDEO EDITING SERVICES</h1>
+            <span class="contact-person">HIMANSHU</span>
+            <span class="tagline">Viral Edits • Wedding Films • Business Promos</span>
         </header>
 
         <section class="about">
             <div class="about-content">
-                <p>Crafting stunning visual stories with dynamic edits, cinematic grading, and trending effects. Specializing in content that captivates and converts.</p>
+                <p>Professional video editing services that transform your footage into captivating visual stories. Specializing in dynamic transitions, cinematic color grading, and engaging motion graphics.</p>
             </div>
         </section>
 
         <section class="services">
-            <h2 class="section-title">What I Offer</h2>
+            <h2 class="section-title">My Services</h2>
             <div class="services-grid">
-                <div class="service-card" data-animate>
-                    <i class="fas fa-film service-icon"></i>
+                <div class="service-card">
+                    <div class="service-icon">🎬</div>
                     <h3>Viral Reels</h3>
-                    <p>Eye-catching social media videos with trendy transitions and effects to skyrocket engagement.</p>
+                    <p>Trendy, attention-grabbing social media content with seamless transitions and effects.</p>
                 </div>
-                <div class="service-card" data-animate>
-                    <i class="fas fa-ring service-icon"></i>
+                <div class="service-card">
+                    <div class="service-icon">💍</div>
                     <h3>Wedding Films</h3>
-                    <p>Emotional, cinematic films that capture your special day with elegance and flair.</p>
+                    <p>Cinematic storytelling that preserves your special moments with artistic flair.</p>
                 </div>
-                <div class="service-card" data-animate>
-                    <i class="fas fa-briefcase service-icon"></i>
-                    <h3>Brand Promos</h3>
-                    <p>Professional videos that amplify your brand’s message and drive results.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="portfolio">
-            <h2 class="section-title">Portfolio</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item" data-animate>
-                    <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=1200&q=80" alt="Social Media Reel">
-                    <div class="portfolio-overlay">
-                        <h3>Social Media Reel</h3>
-                        <p>Dynamic edits for influencer content</p>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-animate>
-                    <img src="https://images.unsplash.com/photo-1519227355457-e7c349bc68ef?auto=format&fit=crop&w=1200&q=80" alt="Wedding Film">
-                    <div class="portfolio-overlay">
-                        <h3>Wedding Film</h3>
-                        <p>Cinematic love story highlights</p>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-animate>
-                    <img src="https://images.unsplash.com/photo-1507238691749-d1d21e72d129?auto=format&fit=crop&w=1200&q=80" alt="Brand Promo">
-                    <div class="portfolio-overlay">
-                        <h3>Brand Promo</h3>
-                        <p>High-energy product showcase</p>
-                    </div>
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3>Business Promos</h3>
+                    <p>Professional promotional videos that communicate your brand message effectively.</p>
                 </div>
             </div>
         </section>
 
         <div class="contact">
-            <a href="https://www.instagram.com/gw_himanshu" target="_blank" class="social-link" data-animate>
-                <i class="fab fa-instagram"></i>
+            <a href="https://www.instagram.com/gw_himanshu" target="_blank" class="social-link">
+                📸
             </a>
-            <a href="https://wa.me/919016668354" target="_blank" class="social-link" data-animate>
-                <i class="fab fa-whatsapp"></i>
+            <a href="https://wa.me/919016668354" target="_blank" class="social-link">
+                💬
             </a>
         </div>
     </main>
 
     <script>
-        // Preloader
-        window.addEventListener('load', () => {
-            const preloader = document.querySelector('.preloader');
-            preloader.style.opacity = '0';
-            setTimeout(() => preloader.style.display = 'none', 600);
-        });
-
-        // Scroll Animations
-        const animateElements = () => {
-            const elements = document.querySelectorAll('[data-animate]');
-            elements.forEach((el, index) => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.85) {
-                    el.style.animationDelay = `${index * 0.1}s`;
-                    el.classList.add('animate-in');
-                }
+        // Simple animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.service-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.5s ease';
+                observer.observe(card);
             });
-        };
-
-        window.addEventListener('scroll', animateElements);
-        animateElements();
-
-        // Touch-Friendly Hover for Mobile
-        document.querySelectorAll('.service-card, .portfolio-item, .social-link').forEach(el => {
-            el.addEventListener('touchstart', () => el.classList.add('hover'), { passive: true });
-            el.addEventListener('touchend', () => el.classList.remove('hover'), { passive: true });
         });
     </script>
 </body>
